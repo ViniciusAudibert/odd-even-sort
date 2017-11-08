@@ -1,13 +1,17 @@
 package br.com.oddevensort;
 
 public final class OddEvenSort {
-    private OddEvenSort() {
+    private static Integer swapCounter;
+    
+    public static Integer getSwapCounter() {
+    	return swapCounter;
     }
-
+    
     /**
      * @param array
      */
     public static <T extends Comparable<T>> void sort(T[] array) {
+        swapCounter = 0;
         if (array != null) {
             boolean sorted = false;
             while (!sorted) {
@@ -46,5 +50,6 @@ public final class OddEvenSort {
         T temp = array[a];
         array[a] = array[b];
         array[b] = temp;
+        swapCounter++;
     }
 }
