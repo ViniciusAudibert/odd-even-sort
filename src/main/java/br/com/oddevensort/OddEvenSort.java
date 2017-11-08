@@ -8,8 +8,9 @@ public final class OddEvenSort {
 	}
 
 	/**
-	 * Ordena o array passado por parametro
-	 * @param array
+	 * Ordena o array passado por parametro em ordem crescente
+	 *
+	 * @param array será modificado e ordenado
 	 */
 	public static <T extends Comparable<T>> void sort(T[] array) {
 		swapCounter = Long.valueOf(0);
@@ -23,16 +24,20 @@ public final class OddEvenSort {
 	}
 
 	/**
-	 * @param array
-	 * @param i
-	 * @return
+	 * Percorre todo array de dois em dois a partir do index passado por parametro e compara os elementos
+	 * quando o elemento seguinte é menor realiza a troca
+	 *
+	 * @param array compara os elementos e realiza a troca se o elemento seguite for maior
+	 * @param index indica o index de onde a iteração deve iniciar
+	 *
+	 * @return true se nessa iteração não houve nenhuma troca ou false se algum número trocou de posição
 	 */
-	private static <T extends Comparable<T>> boolean innerSort(T[] array, Integer i) {
+	private static <T extends Comparable<T>> boolean innerSort(T[] array, Integer index) {
 		boolean sorted = true;
 
-		for (; i < array.length - 1; i += 2) {
-			if (array[i].compareTo(array[i + 1]) > 0) {
-				swap(array, i, i + 1);
+		for (; index < array.length - 1; index += 2) {
+			if (array[index].compareTo(array[index + 1]) > 0) {
+				swap(array, index, index + 1);
 				sorted = false;
 			}
 		}
@@ -41,16 +46,16 @@ public final class OddEvenSort {
 	}
 
 	/**
-	 * Método responsável por realizar a troca entre os arrays
+	 * Realiza a troca de dois elementos dentro do array
 	 *
-	 * @param array
-	 * @param a
-	 * @param b
+	 * @param array       é modificado onde o duas posições serão alternadas
+	 * @param firstIndex  posição 1 que será alternada
+	 * @param secondIndex posição 2 que será alternada
 	 */
-	private static <T extends Comparable<T>> void swap(T[] array, int a, int b) {
-		T temp = array[a];
-		array[a] = array[b];
-		array[b] = temp;
+	private static <T extends Comparable<T>> void swap(T[] array, int firstIndex, int secondIndex) {
+		T temp = array[firstIndex];
+		array[firstIndex] = array[secondIndex];
+		array[secondIndex] = temp;
 		swapCounter++;
 	}
 }
