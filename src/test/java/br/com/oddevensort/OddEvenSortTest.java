@@ -69,7 +69,6 @@ public class OddEvenSortTest {
 		printInfo("Reverse Sorted Array (Worst case)", endTime - startTime);
 
 		// ASSERT
-		assertEquals(OddEvenSort.getSwapCounter(), Long.valueOf(49995000L));
 		assertTrue(isArraySorted(reverseSortedArray));
 	}
 
@@ -91,8 +90,10 @@ public class OddEvenSortTest {
 	// Aux functions
 	private void printInfo(String title, long totalTime) {
 		System.out.println(title);
-		System.out.print("Swaps = ");
+		System.out.print("Número de trocas = ");
 		System.out.println(OddEvenSort.getSwapCounter());
+		System.out.print("Número de comparações = ");
+		System.out.println(OddEvenSort.getComparatorCounter());
 		System.out.print("Total time = ");
 		NumberFormat formatter = new DecimalFormat("#0.00000");
 		System.out.println(formatter.format(totalTime / 1000000000d) + " seconds");
